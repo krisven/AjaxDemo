@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+    </script>
+    <!--<script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                var htmlobj = $.ajax({url: "/krisven/text.txt", async: false});
+                $("#test").html(htmlobj.responseText);
+            });
+        });
+    </script>-->
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                var html = $.ajax({
+                    type:"post",
+                    url:"/krisven/LoginServlet?",
+                    data:"a="+ document.loginForm.a.value + "&p=" + document.loginForm.p.value,
+                    async:false
+                }).responseText;
+                document.getElementById('resultDiv').innerHTML = html;
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div id="resultDiv">
+    <form name = "loginForm" action="login">
+        请您输入账号：<input type="text" name="a"><BR>
+        请您输入密码：<input type="password" name="p"><BR>
+    </form>
+</div>
+<button>登录</button>
+</body>
+</html>
